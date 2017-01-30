@@ -13,7 +13,6 @@ module Rilakkuma
   end
 
   class Controller
-    binding.pry
     def initialize(env)
       @env = env
     end
