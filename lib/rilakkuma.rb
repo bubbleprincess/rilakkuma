@@ -1,5 +1,7 @@
 require "rilakkuma/version"
 require "rilakkuma/routing"
+require "rilakkuma/util"
+require "rilakkuma/dependencies"
 
 module Rilakkuma
   class Application
