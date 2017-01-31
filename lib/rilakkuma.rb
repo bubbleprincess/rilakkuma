@@ -2,6 +2,7 @@ require "rilakkuma/version"
 require "rilakkuma/routing"
 require "rilakkuma/util"
 require "rilakkuma/dependencies"
+require "rilakkuma/controller"
 
 module Rilakkuma
   class Application
@@ -32,16 +33,6 @@ module Rilakkuma
         [200, {'Content-Type' => 'text/html'},
           [text]]
       end
-    end
-  end
-
-  class Controller
-    def initialize(env)
-      @env = env
-    end
-
-    def env
-      @env
     end
   end
 end
