@@ -1,7 +1,10 @@
 require "erubis"
+require "rilakkuma/file_model"
 
 module Rilakkuma
   class Controller
+    include Rilakkuma::Model
+
     def initialize(env)
       @env = env
     end

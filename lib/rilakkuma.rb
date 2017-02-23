@@ -3,6 +3,7 @@ require "rilakkuma/routing"
 require "rilakkuma/util"
 require "rilakkuma/dependencies"
 require "rilakkuma/controller"
+require "rilakkuma/file_model"
 
 module Rilakkuma
   class Application
