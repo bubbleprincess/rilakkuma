@@ -23,17 +23,18 @@ module Rilakkuma
 
       klass, act = get_controller_and_action(env)
       controller = klass.new(env)
-      begin
-        text = controller.send(act)
-      rescue Exception => e
-        [500, {'Content-Type' => 'text/html'},
-          [%Q(<div style="text-align: center; margin-left: auto; margin-right: auto; border: 2px solid gray; border-radius: 5px; height: 40%; width: 30%;">
-            Welp it failed because #{e} :|
-            <img style="display:block; margin: 0 auto;" src="http://cdn.list25.com/wp-content/uploads/2011/11/penguifall.gif"></div>)]]
+      text = controller.send(act)
+      if controller.get_response
+        st, hd, rs = controller.get_response.to_a
+        [st, hd, [rs.body].flatten]
       else
-        [200, {'Content-Type' => 'text/html'},
-          [text]]
+        [200,
+          {'Content-Type' => 'text/html'}, [text]]
       end
+        # [500, {'Content-Type' => 'text/html'},
+        #   [%Q(<div style="text-align: center; margin-left: auto; margin-right: auto; border: 2px solid gray; border-radius: 5px; height: 40%; width: 30%;">
+        #     Welp it failed because #{e} :|
+        #     <img style="display:block; margin: 0 auto;" src="http://cdn.list25.com/wp-content/uploads/2011/11/penguifall.gif"></div>)]]
     end
   end
 end
